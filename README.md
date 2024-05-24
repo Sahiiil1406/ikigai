@@ -6,6 +6,9 @@
     ```sh
     npm install
     ```
+3.```sh
+    npm run dev
+    ```
 
 ### Frontend Setup
 
@@ -16,4 +19,7 @@
 2. Install the required dependencies:
     ```sh
     npm install
+    ```
+3.```sh
+    npm run dev
     ```
