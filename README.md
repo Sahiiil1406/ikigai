@@ -9,7 +9,7 @@
 3.Start the backend server
 ```sh
     npm run dev
-    ```
+ ```
 
 ### Frontend Setup
 
@@ -24,4 +24,4 @@
 3.Start the frontend
 ```sh
     npm run dev
-    ```
+  ```
