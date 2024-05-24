@@ -1,3 +1,10 @@
+##Create a .env file in root dir of server and fill these field
+```sh
+PORT=
+JWT_SECRET=""
+MONGO_URL=""
+```
+
 1. Navigate to the server directory:
     ```sh
     cd server
