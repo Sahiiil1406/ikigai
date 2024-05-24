@@ -6,7 +6,8 @@
     ```sh
     npm install
     ```
-3.```sh
+3.Start the backend server
+```sh
     npm run dev
     ```
 
@@ -20,6 +21,7 @@
     ```sh
     npm install
     ```
-3.```sh
+3.Start the frontend
+```sh
     npm run dev
     ```
