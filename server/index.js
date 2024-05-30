@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const authRouter = require("./routes/auth.routes.js");
+const commentRouter=require('./routes/nestedComment.routes');
 const app = express();
 require("dotenv").config();
 const connectDb = require("./config/db.js");
@@ -15,7 +16,8 @@ app.use(cors());
 app.use(cookieParser());
 
 //routes
-app.use("/", authRouter);
+app.use("/auth", authRouter);
+app.use('/',commentRouter);
 
 
 
