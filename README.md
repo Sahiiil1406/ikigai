@@ -1,6 +1,6 @@
 ##Create a .env file in root dir of server and fill these field
 ```sh
-PORT=3000
+PORT= 3000
 JWT_SECRET=""
 MONGO_URL=""
 ```
