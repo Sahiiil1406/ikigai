@@ -16,5 +16,9 @@ router.get('/user', auth, (req, res)=>{
     res.json(req.user);
 });
 
+router.get('/all',auth, (req, res)=>{
+    res.json("Hello World!");
+});
+
 
 module.exports = router;

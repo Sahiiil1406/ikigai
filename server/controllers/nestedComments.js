@@ -1,4 +1,4 @@
-const Comment = require('../models/comment');
+/* const Comment = require('../models/comment');
 
 
 const createComment=(req,res)=>{
@@ -25,16 +25,17 @@ const addReply=async(req,res)=>{
     try {
         const {comment}=req.body;
         const parentCommentId=req.params.id;
-        console.log(comment,parentCommentId)
+        //console.log(comment,parentCommentId)
         //convert parentCommentId to ObjectId
         const parentComment=await Comment.findById(parentCommentId);
         console.log(parentComment)
-        const reply=await Comment.create({
+        const reply=new Comment({
             comment,
             user:req.user.id,
-            parentCommentId:parentCommentId
+            parentCommentId:parentComment._id
         });
-        parentComment.replies.push(reply._id);
+        
+        parentComment.replies.push(reply);
         await parentComment.save();
         return res.json({
             msg:"Reply Added",
@@ -173,10 +174,32 @@ const getComment=async(req,res)=>{
         })
     }}
 
+ const deleteAll=async(req,res)=>{
+    try {
+        const comment=await Comment.deleteMany({});
+        return res.json({
+            msg:"Comment Deleted",
+            comment
+        })
+    }
+    catch(error){
+        return res.status(500).json({
+            msg:error.message
+        })
+    }   }
+
+    const getAll=async(req,res)=>{
+     const comment=await Comment.find({});
+      return res.json({
+          comment
+      })
+    }
 module.exports={
     createComment,
     addReply,
-    getComment
+    getComment,
+    deleteAll,
+    getAll
 }
 /*
-*/
+ */ */

@@ -1,29 +1,43 @@
-const mongoose=require('mongoose');
+const { Schema, model } = require("mongoose");
 
-const commentSchema=new mongoose.Schema({
-    post:{
-        type:String,
-        ref:'Sahil'
+const commentSchema = new Schema({
+    postedBy: {
+      type: Schema.Types.ObjectId,
+      ref: "User"
     },
-    comment:{
-        type:String,
-        required:true
+    postId: {
+      type:String,
+      default:"sahil"
     },
-    user:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'User'
+    text: {
+      type: String,
+      
     },
-    parentCommentId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Comment',
-        default:null
+    parentComment: {
+      type: Schema.Types.ObjectId,
+      ref: "Comment",
+      default: null
     },
-    replies:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Comment'
+    commentedAt: {
+      type: Date,
+      default: Date.now()
+    },
+    replies: [{
+      type: Schema.Types.ObjectId,
+      ref: "Comment"
     }]
+  });
 
+commentSchema.pre("find", function( next){
+    this.populate({path:"replies",
+populate:{path:"postedBy"}
+})
+    next()
+})
+  
+  
+  
+  const Comment = new model("Comment", commentSchema);
+  module.exports = Comment;
 
-},{timestamps:true});
-
-module.exports=mongoose.model('Comment',commentSchema);
+  /* */
